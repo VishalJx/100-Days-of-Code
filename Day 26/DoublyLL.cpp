@@ -15,6 +15,35 @@ class Node{
     }
 };
 
+void deleteNode(Node* &head, int pos){
+    if(pos == 0){ //if position is at starting i.e. head
+        Node* temp = head;
+        temp->next->prev = NULL; //prev of next node will point to NULL
+        head = head->next; //head will now point to next node
+        temp->next = NULL; //next of temp will point to NULL
+        delete temp; //delete the node
+    }
+    else{
+        Node* temp = head;
+        for(int i=0; i<pos-1; i++){
+            temp = temp->next;
+        }
+        if(temp->next->next == NULL){ //if position is at end i.e. tail
+            Node* toDelete = temp->next; //node to be deleted
+            temp->next = NULL; //next of temp will point to NULL
+            toDelete->prev = NULL; //prev of toDelete will point to NULL
+            delete toDelete; //delete the node
+            return;
+        }
+        Node* toDelete = temp->next; //node to be deleted
+        temp->next = toDelete->next; //next of temp will point to next of toDelete
+        toDelete->next->prev = temp; //prev of next of toDelete will point to temp
+        toDelete->next = NULL; //next of toDelete will point to NULL
+        toDelete->prev = NULL; //prev of toDelete will point to NULL
+        delete toDelete; //delete the node
+    }
+}
+
 void insertAtHead(Node* &head, Node* &tail, int data){
     if(head == NULL){ //empty list
     //this will be our head
@@ -61,8 +90,8 @@ void insertAtPosition(Node* &head, Node* &tail, int data, int pos){
     }
     //creating new node
     Node* n = new Node(data);
-    n->next = temp->next;
-    temp->next->prev = n;
+    n->next = temp->next; //new node point to next node
+    temp->next->prev = n; //next node prev point to new node
     temp->next = n;
     n->prev = temp;
 }
@@ -103,7 +132,19 @@ int main() {
     insertAtTail(tail, 30);
     print(head);
 
+    insertAtTail(tail, 40);
+    print(head);
+
+    insertAtTail(tail, 50);
+    print(head);
+
+    insertAtTail(tail, 80);
+    print(head);
+
     insertAtPosition(head, tail, 100, 1);
+    print(head);
+
+    deleteNode(head, 5);
     print(head);
 
     cout<<getLength(head);
