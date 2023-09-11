@@ -85,6 +85,44 @@ void levelOrder(Node* root){
     }
 }
 
+//Inorder Traversal : Depth First Search
+//Left Root(print) Right
+void inorder(Node* root){
+    //base case
+    if(root == NULL)
+        return;
+
+    inorder(root -> left);//left
+    cout << root -> data << " ";//root
+    inorder(root -> right);//right
+
+}
+
+//Preorder Traversal : Depth First Search
+//Root(print) Left Right
+void preorder(Node* root){
+    //base case
+    if(root == NULL)
+        return;
+
+    cout << root -> data << " ";//root
+    preorder(root -> left);//left
+    preorder(root -> right);//right
+
+}
+
+//Postorder Traversal : Depth First Search
+//Left Right Root(print)
+void postorder(Node* root){
+    //base case
+    if(root == NULL)
+        return;
+
+    postorder(root -> left);//left
+    postorder(root -> right);//right
+    cout << root -> data << " ";//root
+
+}
 
 int main() {
     
@@ -92,5 +130,13 @@ int main() {
     root = buildTree(root);
 
     levelOrder(root);
+    cout << endl;
+    inorder(root);
+    cout << endl;
+    preorder(root);
+    cout << endl;
+    postorder(root);
+
     return 0;
+
 }
