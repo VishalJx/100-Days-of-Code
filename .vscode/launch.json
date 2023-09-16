@@ -1,16 +1,15 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/vishaljx/VishalJx/Projects/100Days/Day 38",
-      "program": "/home/vishaljx/VishalJx/Projects/100Days/Day 38/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "c:/Users/visha/Projects/100-Days-of-Code/Day 42",
+      "program": "c:/Users/visha/Projects/100-Days-of-Code/Day 42/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
