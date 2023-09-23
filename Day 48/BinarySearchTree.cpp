@@ -20,7 +20,7 @@ Node* insertInBST(Node* &root, int val){
     //Base Case
     if(root == NULL){
         root = new Node(val);
-        return root;
+        return NULL;
     }
     //Recursive Case
     //Insert in left subtree
