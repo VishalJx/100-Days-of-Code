@@ -4,7 +4,7 @@ using namespace std;
 vector<int> dijkstra(vector<vector<int>> &ver, int vertices, int edges, int source){
     //ajacency list
     unordered_map<int, vector<pair<int, int>>> adj;
-    for(int i=0; i<vertices; i++){
+    for(int i=0; i<edges; i++){
         int u = ver[i][0];
         int v = ver[i][1];
         int w = ver[i][2];
