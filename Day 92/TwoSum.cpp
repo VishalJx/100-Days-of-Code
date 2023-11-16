@@ -20,6 +20,37 @@ vector<int> solve1(vector<int>& nums, int target){
     return ans;
 }
 
+/*Using Sorting*/
+vector<int> solve3(vector<int>& nums, int target){
+    vector<int> ans;
+    //create a copy of the nums vector
+    vector<int> copy = nums;
+    //sort the copy vector
+    sort(copy.begin(), copy.end());
+    //create two pointers
+    int i = 0, j = copy.size() - 1;
+    //iterate till i < j
+    while(i < j){
+        //if the sum of the two elements is equal to the target
+        if(copy[i] + copy[j] == target){
+            //push the indices in the ans vector
+            ans.push_back(i);
+            ans.push_back(j);
+            return ans;
+        }
+        //if the sum of the two elements is less than the target
+        else if(copy[i] + copy[j] < target){
+            //increment i
+            i++;
+        }
+        //else decrement j
+        else{
+            j--;
+        }
+    }
+    return ans;
+}
+
 /*Optimal-> using hashmap*/
 vector<int> solve2(vector<int>& nums, int target){
     vector<int> ans;
@@ -50,6 +81,9 @@ vector<int> twoSum(vector<int>& nums, int target){
 
     /*Optimal*/
     return solve2(nums, target);
+
+    /*Using Sorting*/
+    // return solve3(nums, target);
 
 }
 
